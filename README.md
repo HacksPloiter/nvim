@@ -51,4 +51,4 @@ This is the initial release of this work and for solely personal use. I understa
 
 ## License
 
-[MIT License](#)
+[MIT License](https://github.com/HacksPloiter/nvim/blob/hacksploiter/publicrepo/autoneo_ed12d55/v1work/LICENSE)
