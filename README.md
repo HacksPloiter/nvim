@@ -10,17 +10,24 @@ Please understand that this repository is for solely personal use and not mainta
 With that said, you are the in charge of this repo🫡. Happy Neoviming🚀!
 
 ## Installation [MacOS]
-I'm assuming you already have installed Neovim. If no please install it with homebrew (preferred). Now, use below command using git to clone the repo into your config directory.
-
+I'm assuming you already have installed Neovim. If no please install it with homebrew (preferred).
 IMPORTANT - Please make sure you don't have any folder with name "nvim" inside ```~/.config/```. If so please move it to some different location. Please make sure you haven't any "nvim" folder inside ```~/.local/share/``` as well.
 
+To remove nvim files/directories completely, below commands can be used:
+```
+rm -rf ~/.config/nvim
+rm -rf ~/.local/share/nvim
+rm -rf ~/.local/state/nvim
+rm -rf ~/.cache/nvim
+```
+Now, use below command using git to clone the repo into your config directory and install.
 
 ```bash
 cd ~/.config/
 git clone <url> #get it from "Code" button on this page.
 cd nvim
 nvim init.lua
-:PackerSync
+:Lazy sync
 
 ```
 
@@ -30,9 +37,9 @@ Use below command to initialise installation.
 ```
 cd ~/.config/nvim/
 nvim init.lua
-:PackerSync
-:PackerUpgrade
-:PackerUpdate
+:Lazy install
+:Lazy update
+:Lazy sync
 ```
 
 Voila! It's done. Most of the plugins and themes, unless they require loading configuration, are already active. Feel free to use the plugin/theme commands.
