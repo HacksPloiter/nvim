@@ -9,10 +9,10 @@
 --================================-> START <-=================================--
 --                               File Imports                                 --
 --------------------------------------------------------------------------------
-require('nvmpackerconfig')  -- NVIM Packer configs
-require('opts')             -- NVIM options configs
-require('keys')             -- NVIM keymaps congis
-require('themeplug')        -- Installed theme and plugin configs
+require('keyconfig')        -- NVIM keymaps congis
+require('optconfig')        -- NVIM options configs
+require('lazyconfig')       -- NVIM Lazy configs
+require('themeplugconfig')  -- Installed theme and plugin configs
 --================================-> END <-===================================--
 
 --================================-> START <-=================================--
@@ -23,9 +23,9 @@ require('themeplug')        -- Installed theme and plugin configs
 --     |-- init.lua (✓)
 --     |
 --     |-- lua ---------
---                     |------ keys.lua (✓)
---                     |------ opts.lua (✓)
---                     |------ packer.lua (✓)
---                     |------ themeplug.lua (✓)
+--                     |------ keyconfig.lua (✓)
+--                     |------ optconfig.lua (✓)
+--                     |------ lazyconfig.lua (✓)
+--                     |------ themeplugconfig.lua (✓)
 --
 --================================-> END <-===================================--

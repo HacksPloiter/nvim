@@ -9,8 +9,8 @@
 --                                Key Configs                                 --
 --------------------------------------------------------------------------------
 -- [[ LEADER ]]
--- These keybindings need to be defined before the first /
--- is called; otherwise, it will default to "\"
--- vim.g.mapleader = ","
--- vim.g.localleader = "\\"
+-- These keybindings need to be defined before the first leader key
+-- is called; otherwise, it will default to the default key.
+vim.g.mapleader = " "
+vim.g.localleader = " "
 --================================-> END <-===================================--

@@ -1,5 +1,5 @@
 --****************************************************************************--
---*                             [themeplug.lua]                              *--
+--*                         [themeplugconfig.lua]                            *--
 --*                   [NVIM THEME AND PLUGIN CONFIG FILE]                    *--
 --*                     [Author/Credit - Tanweer Ashif]                      *--
 --* [LinkedIn/tanweerashif | GitHub/HacksPloiter | https://tanweerashif.com] *--
@@ -26,7 +26,6 @@ if not status_ok then
   return
 end
 configs.setup {
-
 -- Override default colors or create your own
 --   colors = {
 --              onedark = { bg = "#FF0000" }, -- red
@@ -107,14 +106,13 @@ configs.setup {
 --     vim_ultest = true,
 --     which_key = true,
 --   },
-
   options = {
     -- Use cursorline highlighting?
     cursorline = true,
     -- Use a transparent background?
-    transparency = false,
+    transparency = true,
     -- Use the theme's colors for Neovim's :terminal?
-    terminal_colors = true,
+    terminal_colors = false,
     -- When the window is out of focus, change the normal background?
     highlight_inactive_windows = false,
   }
@@ -163,7 +161,7 @@ configs.setup {
     -- (for example if you want to disable highlighting for the `tex` filetype,
     -- you need to include `latex` in this list as this is the name of the
     -- parser) list of language that will be disabled.
-    disable = { "c", "rust" },
+    disable = { "rust" },
     --
     -- Disable slow treesitter highlight for large files
     -- disable = function(lang, buf)
@@ -188,7 +186,7 @@ configs.setup {
 
 
 --================================-> START <-=================================--
---                         Plugin Tree-Sitter Configs                         --
+--                          Plugin Nvim-Tree Configs                          --
 --------------------------------------------------------------------------------
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
@@ -214,5 +212,102 @@ configs.setup {
   filters = {
     dotfiles = true,
   },
+}
+--================================-> END <-===================================--
+
+
+--================================-> START <-=================================--
+--                          Plugin Lualine Configs                          --
+--------------------------------------------------------------------------------
+-- Filename colour changes based on edits.
+local custom_fname = require('lualine.components.filename'):extend()
+local highlight = require'lualine.highlight'
+local default_status_colors = { saved = '#00ff00', modified = 'white' }
+
+function custom_fname:init(options)
+  custom_fname.super.init(self, options)
+  self.status_colors = {
+    saved = highlight.create_component_highlight_group({
+              bg = default_status_colors.saved},
+              'filename_status_saved', self.options),
+    modified = highlight.create_component_highlight_group({
+              bg = default_status_colors.modified},
+              'filename_status_modified', self.options),
+  }
+  if self.options.color == nil then self.options.color = '' end
+end
+
+function custom_fname:update_status()
+  local data = custom_fname.super.update_status(self)
+  data = highlight.component_format_highlight(
+           vim.bo.modified and
+           self.status_colors.modified or
+           self.status_colors.saved) .. data
+  return data
+end
+
+local status_ok, configs = pcall(require, "lualine")
+if not status_ok then
+  return
+end
+configs.setup {
+  options = {
+    icons_enabled = true,
+    theme = 'molokai',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+    }
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {custom_fname},
+    -- lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {
+    lualine_a = {'filename'},
+    lualine_b = {},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {},
+  },
+  winbar = {},
+  inactive_winbar = {},
+  extensions = {},
+}
+--================================-> END <-===================================--
+
+
+--================================-> START <-=================================--
+--                          Plugin Dashboard Configs                          --
+--------------------------------------------------------------------------------
+local status_ok, configs = pcall(require, "dashboard")
+if not status_ok then
+  return
+end
+configs.setup {
 }
 --================================-> END <-===================================--
