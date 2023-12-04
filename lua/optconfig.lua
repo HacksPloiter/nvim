@@ -1,5 +1,5 @@
 --****************************************************************************--
---*                                [opts.lua]                                *--
+--*                            [optconfig.lua]                               *--
 --*                        [NVIM OPTIONS CONFIG FILE]                        *--
 --*                     [Author/Credit - Tanweer Ashif]                      *--
 --* [LinkedIn/tanweerashif | GitHub/HacksPloiter | https://tanweerashif.com] *--
