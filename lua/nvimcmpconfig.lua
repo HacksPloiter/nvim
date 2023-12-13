@@ -11,9 +11,9 @@
 --------------------------------------------------------------------------------
 local cmp_status_ok, cmp = pcall(require, "cmp")
 local snip_status_ok, luasnip = pcall(require, "luasnip") 
-local cmplualine_status_ok, luasnip = pcall(require, "cmp_luasnip")
+local cmpluasnip_status_ok, luasnip = pcall(require, "cmp_luasnip")
 
-if (cmp_status_ok and snip_status_ok and cmplualine_status_ok) then
+if (cmp_status_ok and snip_status_ok and cmpluasnip_status_ok) then
 
   require("luasnip/loaders/from_vscode").lazy_load()
   

@@ -1,37 +1,21 @@
 --****************************************************************************--
---*                         [nvimtreeconfig.lua]                             *--
---*                    [PLUGIN NVIMTREE CONFIG FILE]                         *--
+--*                       [toggletermconfig.lua]                             *--
+--*                   [PLUGIN TOGGLETERM CONFIG FILE]                        *--
 --*                   [Author/Credit - Tanweer Ashif]                        *--
 --* [LinkedIn/tanweerashif | GitHub/HacksPloiter | https://tanweerashif.com] *--
 --****************************************************************************--
 
 
 --================================-> START <-=================================--
---                          Plugin Nvim-Tree Configs                          --
+--                        Plugin ToggleTerm Configs                           --
 --------------------------------------------------------------------------------
-local status_ok, configs = pcall(require, "nvim-tree")
+local status_ok, configs = pcall(require, "toggleterm")
 if not status_ok then
   return
-else 
-  vim.g.loaded_netrw = 1
-  vim.g.loaded_netrwPlugin = 1
-  configs.setup {
-    sort = {
-      sorter = "case_sensitive",
-    },
-    view = {
-      width = 30,
-    },
-    renderer = {
-      group_empty = true,
-    },
-    filters = {
-      dotfiles = true,
-    },
-  }
+else
   vim.api.nvim_set_keymap('n',
-                          '<leader>nt',
-                          ':NvimTreeToggle<CR>',
+                          '<leader>tt',
+                          ':ToggleTerm<CR>',
                           {noremap = true, silent = true})
 end
 --================================-> END <-===================================--

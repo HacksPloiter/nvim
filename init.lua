@@ -10,7 +10,7 @@
 --                               File Imports                                 --
 --------------------------------------------------------------------------------
 -- Core Config Imports
-require('keyconfig')             -- NVIM keymaps congis
+require('keycommandconfig')      -- NVIM custom commands and keymaps configs
 require('optconfig')             -- NVIM options configs
 -- Lazy Config Imports
 require('lazyconfig')            -- NVIM Lazy configs
@@ -24,6 +24,31 @@ require('nvimcmpconfig')         -- Plugin nvim-cmp configs
 require('nvimdashboardconfig')   -- Plugin nvim-dashboard configs
 require('nvimtreeconfig')        -- Plugin nvim-tree configs
 require('nvimtreesitterconfig')  -- Plugin nvim-treesitter configs
+require('toggletermconfig')      -- Plugin toggleterm configs
+require('telescopeconfig')       -- Plugin telescope configs
+require('masonconfig')           -- Plugin mason configs
+require('nvimlspconfig')         -- Plugin nvim-lspconfig configs
+-- Shell Apps Configs
+require('lazygitconfig')         -- Lazygit app configs
+--================================-> END <-===================================--
+
+
+--================================-> START <-=================================--
+--                            Theme Control Centre                            --
+--------------------------------------------------------------------------------
+-- vim.cmd 'colorscheme dracula'
+-- vim.cmd 'colorscheme lunar'
+vim.cmd("colorscheme onedark_vivid")
+--================================-> END <-===================================--
+
+
+--================================-> START <-=================================--
+--               Sets neovim as git editor using neovim-remote                --
+--------------------------------------------------------------------------------
+--if vim.fn.has('nvim') == 1 and vim.fn.executable('nvr') == 1 then
+--  print("testprint");
+--  vim.env.GIT_EDITOR = "nvr -cc split --remote-wait +'set bufhidden=wipe'"
+--end
 --================================-> END <-===================================--
 
 
@@ -31,9 +56,13 @@ require('nvimtreesitterconfig')  -- Plugin nvim-treesitter configs
 --              FILE STRUCTURES & BACKUP INFO - WHAT TO BACKUP                --
 --------------------------------------------------------------------------------
 --  $HOME/.config/nvim
+--  │
 --  ├── 📂 init.lua (✓)
+--  │
 --  └── lua
+--      │
 --      └── config
+--          │
 --          ├── 📂 keyconfig.lua (✓)
 --          ├── 📂 optconfig.lua (✓)
 --          ├── 📂 lazyconfig.lua (✓)

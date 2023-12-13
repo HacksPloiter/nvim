@@ -45,7 +45,7 @@ else
     options = {
       icons_enabled = true,
       theme = 'molokai',
-      component_separators = { left = '', right = ''},
+      component_separators = { left = '', right = '' },
       section_separators = { left = '', right = ''},
       disabled_filetypes = {
         statusline = {},
@@ -62,7 +62,14 @@ else
     },
     sections = {
       lualine_a = {'mode'},
-      lualine_b = {'branch', 'diff', 'diagnostics'},
+      lualine_b = {
+                    {  'branch',
+                      fmt = function(name)
+                        return name:match(".-([^/]+)$")
+                      end,
+                    },
+                    'diff', 'diagnostics'
+                  },
       -- lualine_c = {custom_fname},
       lualine_c = {'filename'},
       lualine_x = {'encoding', 'fileformat', 'filetype'},
@@ -70,24 +77,74 @@ else
       lualine_z = {'location'}
     },
     inactive_sections = {
-      lualine_a = {},
-      lualine_b = {},
-      lualine_c = {'filename'},
-      lualine_x = {'location'},
-      lualine_y = {},
-      lualine_z = {}
+      lualine_c = {
+                    'mode',
+                    {
+                      'branch',
+                      fmt = function(name)
+                        return name:match(".-([^/]+)$")
+                      end,
+                    },
+                    'diff', 'diagnostics','filename'
+                  },
+      lualine_x = {'encoding', 'fileformat', 'filetype','progress','location'},
     },
     tabline = {
-      lualine_a = {'filename'},
+      lualine_a = {
+        {
+          'tabs',
+          mode = 1,
+          fmt = function(name,context)
+            return 'Tab '..context.tabnr
+          end
+        },
+      },
       lualine_b = {},
       lualine_c = {},
       lualine_x = {},
       lualine_y = {},
       lualine_z = {},
     },
-    winbar = {},
-    inactive_winbar = {},
-    extensions = {},
+    winbar = {
+      lualine_a = {
+        {
+          'windows',
+          mode=0,
+          icons_enabled = false,
+          fmt = function(name, context)
+            return 'Window '..context.win_number
+          end,
+        },
+      },
+      lualine_b = {
+        {
+          'buffers',
+          buffers_color = {
+            active = 'lualine_b_normal',
+            inactive = 'lualine_a_inactive',
+          },
+        },
+      },
+    },
+    inactive_winbar = {
+      lualine_a = {
+      },
+      lualine_c = {
+        {
+          'windows',
+          mode=2,
+          icons_enabled = false,
+          fmt = function(name, context)
+            return 'Window '..context.win_number
+          end,
+        },
+        {
+          'buffers',
+        }
+      }
+    },
+    extensions = {
+    },
 }
 end
 --================================-> END <-===================================--
