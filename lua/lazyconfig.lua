@@ -25,13 +25,11 @@ vim.opt.rtp:prepend(lazypath)
 
 
 --================================-> START <-=================================--
---    Autocommand that reloads neovim whenever lazyconfig.lua file is saved   --
+--  Autocommand that invokes Lazy sync whenever lazyconfig.lua file is saved  --
 --------------------------------------------------------------------------------
 vim.cmd([[
   augroup lazy_user_config
     autocmd!
-    autocmd BufWritePost lazyconfig.lua lua vim.cmd("Lazy install")
-    autocmd BufWritePost lazyconfig.lua lua vim.cmd("Lazy clean")
     autocmd BufWritePost lazyconfig.lua lua vim.cmd("Lazy sync")
   augroup end
 ]])
@@ -48,21 +46,50 @@ else
   return configs.setup({
     -- Plugins Start --
     {'nvim-telescope/telescope.nvim',
-      branch = '0.1.x',
-      dependencies = {'nvim-lua/plenary.nvim'},
+      branch = '0.1.x', --> Release branch
+      dependencies = {
+        'nvim-lua/plenary.nvim',
+        {
+          'nvim-telescope/telescope-fzf-native.nvim',
+          build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && '..
+                  'cmake --build build --config Release && cmake --install '..
+                  'build --prefix build'
+        },
+      },
     },
     {'nvim-tree/nvim-tree.lua',
       dependencies = {'nvim-tree/nvim-web-devicons'}
     },
     {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
-    {'hrsh7th/nvim-cmp',                             --> Completion engine
-      dependencies = {'L3MON4D3/LuaSnip',            --> Snippet Engine
-        dependencies = {'saadparwaiz1/cmp_luasnip',} --> Snippet source
+    {
+      'hrsh7th/nvim-cmp',     --> Completion engine
+      dependencies =
+      {
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path',
+        'hrsh7th/cmp-cmdline',
+        {'L3MON4D3/LuaSnip',  --> Snippet Engine
+          dependencies = {    --> Snippet source
+            'saadparwaiz1/cmp_luasnip',
+            'rafamadriz/friendly-snippets',
+          }
+        }
       },
     },
-    {'hrsh7th/cmp-buffer'},
-    {'hrsh7th/cmp-path'},
-    {'hrsh7th/cmp-cmdline'},
+    {
+      "williamboman/mason.nvim",
+      dependencies =
+      {
+        {'williamboman/mason-lspconfig.nvim'},
+        {
+          'neovim/nvim-lspconfig', --> Neovim's builtin LSP client
+          event = {"BufReadPre","BufNewFile"},
+          -- Source for neovim's built-in language server client.
+          dependencies = "hrsh7th/cmp-nvim-lsp"
+        },
+        {"stevearc/dressing.nvim",},
+      },
+    },
     {'lewis6991/gitsigns.nvim'},
     {'akinsho/toggleterm.nvim', version = "*", config = true},
     {'folke/trouble.nvim',
@@ -76,7 +103,11 @@ else
     },
     {'nvimdev/dashboard-nvim',
       event = 'VimEnter',
-      dependencies = {{'nvim-tree/nvim-web-devicons'}}
+      dependencies = {'nvim-tree/nvim-web-devicons'}
+    },
+    {
+      "folke/which-key.nvim",
+      event = "VeryLazy",
     },
     -- Plugins End --
     -- Themes Start --
