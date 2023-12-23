@@ -28,7 +28,9 @@ protected calls.
 
 ## Pretty cool websites
 https://github.com/rockerBOO/awesome-neovim
+
 https://neovimcraft.com
+
 https://dotfyle.com
 
 ## Understanding Neovim LSP

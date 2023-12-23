@@ -109,6 +109,14 @@ else
       "folke/which-key.nvim",
       event = "VeryLazy",
     },
+    {
+      'numToStr/Comment.nvim',
+      lazy = false,
+    },
+    {'kaplanz/retrail.nvim',},
+    {'lcheylus/overlength.nvim'},
+    {'HacksPloiter/smartcolumn.nvim'},
+
     -- Plugins End --
     -- Themes Start --
     {"olimorris/onedarkpro.nvim"}, --> Closest to Onedark Pro VSC

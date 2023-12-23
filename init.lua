@@ -7,6 +7,17 @@
 
 
 --================================-> START <-=================================--
+--                            Commands at a glance                            --
+--------------------------------------------------------------------------------
+--[[
+<Leader>wt = Whitespace Trimmer
+<Leader>wh = Whitespace Highlighter
+<Leader>tt = Toggle toggleterm
+]]
+--================================-> END <-===================================--
+
+
+--================================-> START <-=================================--
 --                               File Imports                                 --
 --------------------------------------------------------------------------------
 -- Core Config Imports
@@ -28,6 +39,10 @@ require('toggletermconfig')      -- Plugin toggleterm configs
 require('telescopeconfig')       -- Plugin telescope configs
 require('masonconfig')           -- Plugin mason configs
 require('nvimlspconfig')         -- Plugin nvim-lspconfig configs
+require('commentnvimconfig')     -- Plugin Comment.Nvim configurations
+require('retrailnvimconfig')     -- Plugin retrail.nvim configurations
+require('overlengthnvimconfig')  -- Plugin overlength.nvim configurations
+require('smartcolumnnvimconfig') -- Plugin smartcolumn.nvim configurations
 -- Shell Apps Configs
 require('lazygitconfig')         -- Lazygit app configs
 --================================-> END <-===================================--
@@ -39,16 +54,6 @@ require('lazygitconfig')         -- Lazygit app configs
 -- vim.cmd 'colorscheme dracula'
 -- vim.cmd 'colorscheme lunar'
 vim.cmd("colorscheme onedark_vivid")
---================================-> END <-===================================--
-
-
---================================-> START <-=================================--
---               Sets neovim as git editor using neovim-remote                --
---------------------------------------------------------------------------------
---if vim.fn.has('nvim') == 1 and vim.fn.executable('nvr') == 1 then
---  print("testprint");
---  vim.env.GIT_EDITOR = "nvr -cc split --remote-wait +'set bufhidden=wipe'"
---end
 --================================-> END <-===================================--
 
 
