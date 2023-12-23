@@ -10,10 +10,21 @@
 --                           Theme Dracula Configs                            --
 --------------------------------------------------------------------------------
 local status_ok, configs = pcall(require, "dracula")
-local isdracula = vim.g.colors_name == "dracula"
-if status_ok and isdracula then
-  vim.opt.syntax = "ON"
-  vim.opt.termguicolors = true
+if status_ok then
+  PostDracula = function()
+    vim.defer_fn(function()
+      if(vim.g.colors_name == 'dracula') then
+        vim.opt.syntax = "ON"
+        vim.opt.termguicolors = true
+      end
+    end, 0)
+  end
+  vim.cmd[[
+    augroup CheckCurrTheme
+      autocmd!
+      autocmd ColorScheme * lua PostDracula()
+    augroup END
+  ]]
 else
   return
 end

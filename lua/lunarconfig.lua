@@ -10,11 +10,21 @@
 --                           Theme LunarVim Configs                           --
 --------------------------------------------------------------------------------
 local status_ok, configs = pcall(require, "lunar")
-local islunar = vim.g.colors_name == "lunar"
-if status_ok and islunar
-then
-  vim.opt.syntax = "ON"
-  vim.opt.termguicolors = true
+if status_ok then
+  PostLunar = function()
+    vim.defer_fn(function()
+      if(vim.g.colors_name == 'lunar') then
+        vim.opt.syntax = "ON"
+        vim.opt.termguicolors = true
+      end
+    end, 0)
+  end
+  vim.cmd[[
+    augroup CheckCurrTheme
+      autocmd!
+      autocmd ColorScheme * lua PostLunar()
+    augroup END
+  ]]
 else
   return
 end

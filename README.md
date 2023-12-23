@@ -52,6 +52,10 @@ Feel free to use any of the plugin/theme command. If you are unaware of the all 
 
 Since this repository is not maintained, please create a fork of it and feel free to modify/update the code.
 
+## Good Read
+
+[NOTES.md](https://github.com/HacksPloiter/nvim/blob/hacksploiter/publicrepo/autoneo/NOTES.md)
+
 ## NOTE
 
 This is the initial release of this work and for solely personal use. I understand that I have not mentioned all of the details in this readme. Links to official repos of the plugins and themes can be googled. The name of the plugins and themes can be found out in the ```nvmpackerconfig.lua``` file.
