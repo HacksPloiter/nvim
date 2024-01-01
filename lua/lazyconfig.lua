@@ -115,7 +115,7 @@ else
     },
     {'kaplanz/retrail.nvim',},
     {'lcheylus/overlength.nvim'},
-    {'HacksPloiter/smartcolumn.nvim'},
+    {'HacksPloiter/smartercolumn.nvim'},
 
     -- Plugins End --
     -- Themes Start --

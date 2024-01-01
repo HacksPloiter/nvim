@@ -9,6 +9,9 @@
 --================================-> START <-=================================--
 --                                Key Configs                                 --
 --------------------------------------------------------------------------------
+-- [[ Yank To Clipboard ]]
+vim.api.nvim_set_option("clipboard","unnamed")
+
 -- [[ Timeout ]]
 vim.o.timeout = true
 vim.o.timeoutlen = 5000
@@ -29,19 +32,32 @@ vim.api.nvim_set_keymap('n',
                         ':bn<CR>',
                         {noremap = true, silent = true})
 
+-- [[ Shift + q quits a buffer ]]
 vim.api.nvim_set_keymap('n',
                         '<S-q>',
                         ':Bd<CR>',
                         {noremap = true, silent = true})
 
--- [[ TODO ]]
--- To make numpad keys work for keybindings.
+-- [[ Toggle line numbers using <leader>nn ]]
+vim.api.nvim_set_keymap("n",
+                        "<leader>nn",
+                        ":set number! number?<CR>",
+                        {desc = "Toggle line numbers"})
+
+-- [[ Toggle search highlights]]
+vim.api.nvim_set_keymap("n",
+                        "<leader>/",
+                        ":set hlsearch! hlsearch?<CR>",
+                        {desc = "Toggle search highlighting"})
 -- [[ Shift + Numpad 0 closes a buffer ]]
 -- Mapping Shift + Numpad 0 to execute the command MyBd
 -- vim.api.nvim_set_keymap('n',
 --                         '<S-k0>',
 --                         ':lua vim.cmd("Bd")<CR>',
 --                         { noremap = true, silent = true })
+
+-- [[ TODO ]]
+-- To make numpad keys work for keybindings.
 --================================-> END <-===================================--
 
 

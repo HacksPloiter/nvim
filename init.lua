@@ -13,6 +13,8 @@
 <Leader>wt = Whitespace Trimmer
 <Leader>wh = Whitespace Highlighter
 <Leader>tt = Toggle toggleterm
+<Leader>/ = Toggle search highlights
+<Leader>nn = Toggle line numbers
 ]]
 --================================-> END <-===================================--
 
@@ -42,7 +44,7 @@ require('nvimlspconfig')         -- Plugin nvim-lspconfig configs
 require('commentnvimconfig')     -- Plugin Comment.Nvim configurations
 require('retrailnvimconfig')     -- Plugin retrail.nvim configurations
 require('overlengthnvimconfig')  -- Plugin overlength.nvim configurations
-require('smartcolumnnvimconfig') -- Plugin smartcolumn.nvim configurations
+require('smartercolumnnvimconfig') -- Plugin smartcolumn.nvim configurations
 -- Shell Apps Configs
 require('lazygitconfig')         -- Lazygit app configs
 --================================-> END <-===================================--

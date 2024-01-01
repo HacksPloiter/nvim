@@ -36,7 +36,8 @@ else
     highlight_to_eol = true,
     -- List of filetypes to disable overlength highlighting
     disable_ft = {'qf', 'help', 'man', 'checkhealth', 'lazy', 'packer',
-                  'NvimTree', 'Telescope', 'WhichKey', 'dashboard',},
+                  'NvimTree', 'Telescope', 'WhichKey', 'dashboard',
+                  'toggleterm'},
   })
 end
 --=================================-> END <-==================================--

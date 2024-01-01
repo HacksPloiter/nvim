@@ -9,7 +9,7 @@
 --                                Opt Configs                                 --
 --------------------------------------------------------------------------------
 -- [[ Context ]]
-vim.opt.colorcolumn = '81'       -- str:  Show col for max line length
+-- vim.opt.colorcolumn = '81'    -- Smartercolumn.nvim is managing.
 vim.opt.number = true            -- bool: Show line numbers
 vim.opt.numberwidth = 1          -- bool: Sets space before line numbers.
 vim.opt.scrolloff = 5            -- int:  Scroll when near 5 lines of top/bottom

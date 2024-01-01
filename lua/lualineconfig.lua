@@ -19,7 +19,7 @@ else
   --custom_fname.apply_icon = require('lualine.components.filetype').apply_icon
   local highlight = require'lualine.highlight'
   local default_status_colors = { saved = 'none', modified = 'white' }
-  
+
   function custom_fname:init(options)
     custom_fname.super.init(self, options)
     self.status_colors = {

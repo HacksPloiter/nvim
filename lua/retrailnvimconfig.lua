@@ -55,6 +55,7 @@ else
         "TelescopePrompt",
         "Trouble",
         "WhichKey",
+        "toggleterm",
       },
     },
     -- Enabled buftypes.
